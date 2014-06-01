@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,7 +83,8 @@ public class MainActivity extends Activity {
 		Pattern idPattern = Pattern.compile("id=\"([0-9]*)\"");
 		Pattern reasonPattern = Pattern.compile("label=\"([a-zA-Z ]*)\"");
 		Pattern amountPattern = Pattern.compile(">(-?[0-9]*.?[0-9]*)<");
-		Matcher matcherID, matcherReason, matcherAmount;
+		Pattern plusOne = Pattern.compile("plusOne=\"([a-zA-Z ]*)\"");
+		Matcher matcherID, matcherReason, matcherAmount, matcherPlusOne;
 
 		try {
 
@@ -94,11 +96,13 @@ public class MainActivity extends Activity {
 				matcherID = idPattern.matcher(line);
 				matcherReason = reasonPattern.matcher(line);
 				matcherAmount = amountPattern.matcher(line);
+				matcherPlusOne = plusOne.matcher(line);
 				matcherID.find();
 				matcherReason.find();
 				matcherAmount.find();
+				matcherPlusOne.find();
 				addRow(new SupItem(matcherID.group(1), matcherReason.group(1),
-						Double.valueOf(matcherAmount.group(1))));
+						Double.valueOf(matcherAmount.group(1)),Boolean.valueOf(matcherPlusOne.group(1))));
 			}
 
 			br.close();
@@ -118,7 +122,7 @@ public class MainActivity extends Activity {
 		for(Entry<String,SupItem> entry : itemList.entrySet()) {
 			SupItem c = entry.getValue();
 			String line = new String("<item id=\""+c.getID()+"\" label=\""+
-					c.getLabel()+"\">"+c.getValue()+"</outcome>\n");
+					c.getLabel()+"\" plusOne=\""+c.isOnlyPlusOne()+"\">"+c.getValue()+"</outcome>\n");
 			content = content.concat(line);			
 		}
 
@@ -169,6 +173,13 @@ public class MainActivity extends Activity {
 		((TextView) newView.findViewById(R.id.label)).setText(row.getLabel());
 		final DecimalFormat df = new DecimalFormat("#.##");
 		((TextView) newView.findViewById(R.id.value)).setText(df.format(row.getValue()));
+		
+		// Set special value if the plusOne mode is on
+		if(row.isOnlyPlusOne()) {
+			EditText edit = (EditText)newView.findViewById(R.id.editText1);
+			edit.setText("1");
+			edit.setEnabled(false);
+		}
 
 		// Set a click listener for the "+" button that will increase the value
 		newView.findViewById(R.id.plus_button).setOnClickListener(new View.OnClickListener() {
@@ -263,10 +274,12 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				
 				// Getting values of the current countable item
 				String mReason = ((EditText) dialogView.findViewById(R.id.dialog_label_value)).getText().toString();
 				String mValue = ((EditText) dialogView.findViewById(R.id.dialog_amount_value)).getText().toString();
-
+				boolean mPlusOne = ((CheckBox)dialogView.findViewById(R.id.dialog_plusOne)).isChecked();
+				
 				if(mReason.equals(""))
 					mReason = getResources().getString(R.string.default_label);
 				if(mValue.equals(""))
@@ -276,7 +289,7 @@ public class MainActivity extends Activity {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.FRANCE);
 
 				// Add the row to the listView
-				addRow(new SupItem(dateFormat.format(new Date()), mReason, Double.valueOf(mValue)));
+				addRow(new SupItem(dateFormat.format(new Date()), mReason, Double.valueOf(mValue),mPlusOne));
 
 				mDialog.dismiss();
 			}

@@ -17,8 +17,10 @@
     <string name="dialog_title">Ajouter un compteur</string>
     <string name="dialog_label">Motif</string>
     <string name="dialog_amount">Montant</string>
+    <string name="dialog_plusOne">Activer mode \"+1 seulement\"</string>
     <string name="validate">OK</string>
     <string name="cancel">Annuler</string>
+    
     
     <!-- Folders and Filenames -->
     <string name="app_folder_name">Sup</string>

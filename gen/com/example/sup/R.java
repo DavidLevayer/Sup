@@ -44,20 +44,21 @@ public final class R {
         public static final int ic_plus_v3=0x7f020008;
     }
     public static final class id {
-        public static final int action_add_item=0x7f09000f;
-        public static final int cancel_button=0x7f09000e;
+        public static final int action_add_item=0x7f090010;
+        public static final int cancel_button=0x7f09000f;
         public static final int container=0x7f090000;
         public static final int delete_button=0x7f090006;
-        public static final int delimiter=0x7f09000c;
+        public static final int delimiter=0x7f09000d;
         public static final int dialog_amount_title=0x7f09000a;
         public static final int dialog_amount_value=0x7f09000b;
         public static final int dialog_label_title=0x7f090008;
         public static final int dialog_label_value=0x7f090009;
+        public static final int dialog_plusOne=0x7f09000c;
         public static final int dialog_title=0x7f090007;
         public static final int editText1=0x7f090004;
         public static final int label=0x7f090002;
         public static final int minus_button=0x7f090003;
-        public static final int ok_button=0x7f09000d;
+        public static final int ok_button=0x7f09000e;
         public static final int plus_button=0x7f090005;
         public static final int value=0x7f090001;
     }
@@ -72,9 +73,9 @@ public final class R {
     public static final class string {
         /**  Folders and Filenames 
          */
-        public static final int app_folder_name=0x7f06000c;
+        public static final int app_folder_name=0x7f06000d;
         public static final int app_name=0x7f060000;
-        public static final int cancel=0x7f06000b;
+        public static final int cancel=0x7f06000c;
         public static final int default_label=0x7f060005;
         public static final int default_value=0x7f060006;
         /**  Sup Item Layout 
@@ -82,6 +83,7 @@ public final class R {
         public static final int delete_button_description=0x7f060002;
         public static final int dialog_amount=0x7f060009;
         public static final int dialog_label=0x7f060008;
+        public static final int dialog_plusOne=0x7f06000a;
         /**  Sup Item Dialog Layout 
          */
         public static final int dialog_title=0x7f060007;
@@ -90,8 +92,8 @@ public final class R {
          */
         public static final int no_sup_item=0x7f060001;
         public static final int plus_button_description=0x7f060003;
-        public static final int supItem_XMLFileName=0x7f06000d;
-        public static final int validate=0x7f06000a;
+        public static final int supItem_XMLFileName=0x7f06000e;
+        public static final int validate=0x7f06000b;
     }
     public static final class style {
         /** 

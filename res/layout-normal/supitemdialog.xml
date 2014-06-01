@@ -6,17 +6,20 @@
 
     <TextView
         android:id="@+id/dialog_title"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:gravity="center"
         android:text="@string/dialog_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/dialog_title"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginBottom="10dp"
         android:background="@color/dialog_title_separator" />
 
@@ -32,6 +35,8 @@
         android:id="@+id/dialog_label_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:ems="10" >
 
         <requestFocus />
@@ -49,8 +54,18 @@
         android:id="@+id/dialog_amount_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:ems="10"
         android:inputType="numberDecimal" />
+
+    <CheckBox
+        android:id="@+id/dialog_plusOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:checked="false"
+        android:text="@string/dialog_plusOne" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -58,7 +73,6 @@
         android:orientation="horizontal" >
 
         <!--
-        
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

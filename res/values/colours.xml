@@ -7,7 +7,7 @@
     <color name="row_off_background">#dbdcdd</color>
     
     <!--  supItem dialog -->
-    <color name="dialog_title">#717171</color>
-    <color name="dialog_title_separator">#717171</color>
+    <color name="dialog_title">#b7b7b7</color>
+    <color name="dialog_title_separator">#bccd63</color>
     <color name="dialog_labels">#FFFFFF</color>
 </resources>
