@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- supItem Row -->
+    <color name="row_reason_text">#000000</color>
+    <color name="row_amount_text">#8d8d8d</color>
+    <color name="row_off_background">#ffe8c5</color>
+    
+    <!--  supItem dialog -->
+    <color name="dialog_title">#ffbb33</color>
+    <color name="dialog_title_separator">#ffbb33</color>
+    
+</resources>

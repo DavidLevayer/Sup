@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dialog_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/dialog_title"
+        android:textSize="30sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/dialog_title_separator" />
+
+    <TextView
+        android:id="@+id/dialog_amount_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dialog_amount"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/dialog_amount_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/dialog_label_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dialog_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <AutoCompleteTextView
+        android:id="@+id/dialog_label_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+
+</LinearLayout>
