@@ -27,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -80,7 +81,7 @@ public class MainActivity extends Activity {
 		String line;
 		Pattern idPattern = Pattern.compile("id=\"([0-9]*)\"");
 		Pattern reasonPattern = Pattern.compile("label=\"([a-zA-Z ]*)\"");
-		Pattern amountPattern = Pattern.compile(">([0-9]*.?[0-9]*)<");
+		Pattern amountPattern = Pattern.compile(">(-?[0-9]*.?[0-9]*)<");
 		Matcher matcherID, matcherReason, matcherAmount;
 
 		try {
@@ -174,10 +175,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				SupItem sup = itemList.get(index);
-				double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
-				sup.add(typedValue);
-				itemList.put(index, sup);
-				((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+				try {
+					double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
+					sup.add(typedValue);
+					itemList.put(index, sup);
+					((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+				} catch(NumberFormatException e) { 
+					// Nothing happen if the value isn't set
+				}
 
 			}
 		});
@@ -187,10 +192,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				SupItem sup = itemList.get(index);
-				double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
-				sup.remove(typedValue);
-				itemList.put(index, sup);
-				((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+				try {
+					double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
+					sup.remove(typedValue);
+					itemList.put(index, sup);
+					((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+				} catch(NumberFormatException e) {
+					// Nothing happen if the value isn't set
+				}
 
 			}
 		});
@@ -245,7 +254,10 @@ public class MainActivity extends Activity {
 		final Dialog mDialog = new Dialog(this);
 		LayoutInflater inflater = getLayoutInflater();
 		final View dialogView = inflater.inflate(R.layout.supitemdialog, null);
+		mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		mDialog.setContentView(dialogView);
+
+		mDialog.setTitle(R.string.dialog_title);
 
 		dialogView.findViewById(R.id.ok_button).setOnClickListener(new View.OnClickListener() {
 
@@ -265,11 +277,11 @@ public class MainActivity extends Activity {
 
 				// Add the row to the listView
 				addRow(new SupItem(dateFormat.format(new Date()), mReason, Double.valueOf(mValue)));
-				
+
 				mDialog.dismiss();
 			}
 		});
-		
+
 
 		dialogView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
 

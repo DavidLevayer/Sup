@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Sup</string>
-    <string name="action_settings">Settings</string>
-    
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Sup+</string>
     
     <!-- Main Layout -->
-    <string name="no_sup_item">Clic on the "+" button to add items</string>
+    <string name="no_sup_item">Appuyez sur [+] pour ajouter un compteur</string>
     
     <!-- Sup Item Layout -->
-    <string name="delete_button_description">delete an item</string>
-    <string name="plus_button_description">increase the value of an item</string>
-    <string name="minus_button_description">decrease the value of an item</string>
-    <string name="default_label">Label Example</string>
-    <string name="default_value">123</string>
+    <string name="delete_button_description">Supprime un item</string>
+    <string name="plus_button_description">Augmente la valeur de l\'item</string>
+    <string name="minus_button_description">Diminue la valeur de l\'item</string>
+    <string name="default_label">Sans Titre</string>
+    <string name="default_value">1234</string>
     
     <!-- Sup Item Dialog Layout -->
     <string name="dialog_title">Ajouter un compteur</string>
@@ -26,8 +23,5 @@
     <!-- Folders and Filenames -->
     <string name="app_folder_name">Sup</string>
     <string name="supItem_XMLFileName">supitem.xml</string>
-    
-    <!-- Others -->
-    <string name="currency">€</string>
 
 </resources>

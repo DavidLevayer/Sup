@@ -9,5 +9,5 @@
     <!--  supItem dialog -->
     <color name="dialog_title">#717171</color>
     <color name="dialog_title_separator">#717171</color>
-    
+    <color name="dialog_labels">#FFFFFF</color>
 </resources>

@@ -11,6 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int dialog_labels=0x7f040005;
         /**   supItem dialog 
          */
         public static final int dialog_title=0x7f040003;
@@ -37,8 +38,10 @@ public final class R {
         public static final int ic_list_remove=0x7f020002;
         public static final int ic_minus=0x7f020003;
         public static final int ic_minus2=0x7f020004;
-        public static final int ic_plus=0x7f020005;
-        public static final int ic_plus2=0x7f020006;
+        public static final int ic_minus_v3=0x7f020005;
+        public static final int ic_plus=0x7f020006;
+        public static final int ic_plus2=0x7f020007;
+        public static final int ic_plus_v3=0x7f020008;
     }
     public static final class id {
         public static final int action_add_item=0x7f09000f;
@@ -51,12 +54,12 @@ public final class R {
         public static final int dialog_label_title=0x7f090008;
         public static final int dialog_label_value=0x7f090009;
         public static final int dialog_title=0x7f090007;
-        public static final int editText1=0x7f090003;
-        public static final int label=0x7f090001;
-        public static final int minus_button=0x7f090002;
+        public static final int editText1=0x7f090004;
+        public static final int label=0x7f090002;
+        public static final int minus_button=0x7f090003;
         public static final int ok_button=0x7f09000d;
-        public static final int plus_button=0x7f090004;
-        public static final int value=0x7f090005;
+        public static final int plus_button=0x7f090005;
+        public static final int value=0x7f090001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -67,33 +70,28 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
         /**  Folders and Filenames 
          */
-        public static final int app_folder_name=0x7f06000e;
+        public static final int app_folder_name=0x7f06000c;
         public static final int app_name=0x7f060000;
-        public static final int cancel=0x7f06000d;
-        /**  Others 
-         */
-        public static final int currency=0x7f060010;
-        public static final int default_label=0x7f060007;
-        public static final int default_value=0x7f060008;
+        public static final int cancel=0x7f06000b;
+        public static final int default_label=0x7f060005;
+        public static final int default_value=0x7f060006;
         /**  Sup Item Layout 
          */
-        public static final int delete_button_description=0x7f060004;
-        public static final int dialog_amount=0x7f06000b;
-        public static final int dialog_label=0x7f06000a;
+        public static final int delete_button_description=0x7f060002;
+        public static final int dialog_amount=0x7f060009;
+        public static final int dialog_label=0x7f060008;
         /**  Sup Item Dialog Layout 
          */
-        public static final int dialog_title=0x7f060009;
-        public static final int hello_world=0x7f060002;
-        public static final int minus_button_description=0x7f060006;
+        public static final int dialog_title=0x7f060007;
+        public static final int minus_button_description=0x7f060004;
         /**  Main Layout 
          */
-        public static final int no_sup_item=0x7f060003;
-        public static final int plus_button_description=0x7f060005;
-        public static final int supItem_XMLFileName=0x7f06000f;
-        public static final int validate=0x7f06000c;
+        public static final int no_sup_item=0x7f060001;
+        public static final int plus_button_description=0x7f060003;
+        public static final int supItem_XMLFileName=0x7f06000d;
+        public static final int validate=0x7f06000a;
     }
     public static final class style {
         /** 

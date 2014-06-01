@@ -9,15 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@+id/value"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/label"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
             android:text="@string/default_label"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/row_label_text" />
@@ -25,22 +26,25 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:gravity="center_horizontal" >
 
             <ImageButton
                 android:id="@+id/minus_button"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/minus_button_description"
                 android:gravity="center"
-                android:src="@drawable/ic_minus" />
+                android:src="@drawable/ic_minus_v3"
+                android:scaleType="fitXY"
+                android:alpha="0.5" />
 
             <EditText
                 android:id="@+id/editText1"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/minus_button"
+                android:layout_toRightOf="@id/minus_button"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="numberDecimal" >
@@ -48,28 +52,31 @@
 
             <ImageButton
                 android:id="@+id/plus_button"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/editText1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@id/editText1"
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/plus_button_description"
                 android:gravity="center"
-                android:src="@drawable/ic_plus" />
+                android:src="@drawable/ic_plus_v3"
+                android:scaleType="fitXY"
+                android:alpha="0.5" />
         </RelativeLayout>
     </LinearLayout>
 
     <TextView
         android:id="@+id/value"
         android:layout_width="80dp"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/delete_button"
-        android:ellipsize="end"
+        android:gravity="center"
         android:text="@string/default_value"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/row_value_text"
-        android:textScaleX="0.4"
-        android:textSize="65sp" />
+        android:textScaleX="0.5"
+        android:textSize="55sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/delete_button"
