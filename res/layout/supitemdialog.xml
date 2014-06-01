@@ -21,6 +21,23 @@
         android:background="@color/dialog_title_separator" />
 
     <TextView
+        android:id="@+id/dialog_label_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dialog_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <AutoCompleteTextView
+        android:id="@+id/dialog_label_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+    <TextView
         android:id="@+id/dialog_amount_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -33,24 +50,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="numberDecimal" >
+        android:inputType="numberDecimal" />
 
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/dialog_label_title"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/dialog_label"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_height="48dp"
+        android:orientation="horizontal" >
 
-    <AutoCompleteTextView
-        android:id="@+id/dialog_label_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10" />
+        <!--
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="?android:attr/dividerHorizontal" />
+        -->
 
+        <View
+            android:id="@+id/delimiter"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/dividerVertical" />
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/delimiter"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/validate" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/delimiter"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="@string/cancel" />
+    </RelativeLayout>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
@@ -20,9 +21,7 @@ import java.util.regex.Pattern;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,18 +38,18 @@ public class MainActivity extends Activity {
 	 * is a {@link android.widget.LinearLayout}.
 	 */
 	private ViewGroup mContainerView;
-	
+
 	/**
 	 * The list of supItem that is extracted from the XML file
 	 * and then kept up to date until closing it
 	 */
 	private Map<String,SupItem> itemList;
-	
+
 	/**
 	 * XML file name that we'll manipulate
 	 */
 	String XMLFileName;
-	
+
 	/**
 	 * XML file folder where the XML file is located
 	 */
@@ -58,7 +57,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mContainerView = (ViewGroup) findViewById(R.id.container);
@@ -108,7 +107,7 @@ public class MainActivity extends Activity {
 			//TODO
 		}
 	}
-	
+
 	public void onDestroy() {
 		super.onDestroy();
 
@@ -121,7 +120,7 @@ public class MainActivity extends Activity {
 					c.getLabel()+"\">"+c.getValue()+"</outcome>\n");
 			content = content.concat(line);			
 		}
-		
+
 		File folder = new File(Environment.getExternalStorageDirectory(), XMLFolderName);
 		File file = new File(Environment.getExternalStorageDirectory()+"/"+XMLFolderName,
 				XMLFileName);
@@ -167,7 +166,34 @@ public class MainActivity extends Activity {
 
 		// Set texts in the new row
 		((TextView) newView.findViewById(R.id.label)).setText(row.getLabel());
-		((TextView) newView.findViewById(R.id.value)).setText(row.getValue()+ " "+getResources().getString(R.string.currency));
+		final DecimalFormat df = new DecimalFormat("#.##");
+		((TextView) newView.findViewById(R.id.value)).setText(df.format(row.getValue()));
+
+		// Set a click listener for the "+" button that will increase the value
+		newView.findViewById(R.id.plus_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				SupItem sup = itemList.get(index);
+				double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
+				sup.add(typedValue);
+				itemList.put(index, sup);
+				((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+
+			}
+		});
+
+		// Set a click listener for the "-" button that will decrease the value
+		newView.findViewById(R.id.minus_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				SupItem sup = itemList.get(index);
+				double typedValue = Double.valueOf(((EditText)newView.findViewById(R.id.editText1)).getText().toString());
+				sup.remove(typedValue);
+				itemList.put(index, sup);
+				((TextView) newView.findViewById(R.id.value)).setText(df.format(sup.getValue()));
+
+			}
+		});
 
 		// Set a click listener for the "X" button in the row that will remove the row.
 		newView.findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
@@ -216,51 +242,44 @@ public class MainActivity extends Activity {
 
 	private void addItem() {
 		// Pop the dialog
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		final Dialog mDialog = new Dialog(this);
 		LayoutInflater inflater = getLayoutInflater();
-		builder
-		.setView(inflater.inflate(R.layout.supitemdialog, null))
-		.setPositiveButton(R.string.validate, new DialogInterface.OnClickListener() {
+		final View dialogView = inflater.inflate(R.layout.supitemdialog, null);
+		mDialog.setContentView(dialogView);
+
+		dialogView.findViewById(R.id.ok_button).setOnClickListener(new View.OnClickListener() {
 
 			@Override
-			public void onClick(DialogInterface dialog, int which) {
+			public void onClick(View v) {
+				// Getting values of the current countable item
+				String mReason = ((EditText) dialogView.findViewById(R.id.dialog_label_value)).getText().toString();
+				String mValue = ((EditText) dialogView.findViewById(R.id.dialog_amount_value)).getText().toString();
 
-				// Checking the values...
-				// TODO
+				if(mReason.equals(""))
+					mReason = getResources().getString(R.string.default_label);
+				if(mValue.equals(""))
+					mValue = getResources().getString(R.string.default_value);
 
-				// ...and add it to the concerned XML file
-				SupItem mRow = createItemFromDialog((Dialog)dialog);
+				//Generation of an unique ID
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.FRANCE);
 
-				// Add the row to the listview
-				addRow(mRow);
+				// Add the row to the listView
+				addRow(new SupItem(dateFormat.format(new Date()), mReason, Double.valueOf(mValue)));
 				
-			}
-		})
-		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-
+				mDialog.dismiss();
 			}
 		});
 		
-		builder.show();
-	}
-	
-	private SupItem createItemFromDialog(Dialog currentDialogView) {
-		
-		// Getting values of the current countable item
-		String mReason = ((EditText) currentDialogView.findViewById(R.id.dialog_label_value)).getText().toString();
-		String mValue = ((EditText) currentDialogView.findViewById(R.id.dialog_amount_value)).getText().toString();
-		
-		//Generation of an unique ID
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss", Locale.FRANCE);
-		
-		return new SupItem(dateFormat.format(new Date()), mReason, Double.valueOf(mValue));			
-	}
-	
-	
 
+		dialogView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mDialog.dismiss();
+			}
+		});
+
+		mDialog.show();
+	}
 
 }

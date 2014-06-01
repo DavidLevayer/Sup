@@ -13,8 +13,8 @@
     <string name="delete_button_description">delete an item</string>
     <string name="plus_button_description">increase the value of an item</string>
     <string name="minus_button_description">decrease the value of an item</string>
-    <string name="default_label">Label : </string>
-    <string name="default_value">Value</string>
+    <string name="default_label">Label Example</string>
+    <string name="default_value">123</string>
     
     <!-- Sup Item Dialog Layout -->
     <string name="dialog_title">Ajouter un compteur</string>

@@ -15,11 +15,11 @@ public final class R {
          */
         public static final int dialog_title=0x7f040003;
         public static final int dialog_title_separator=0x7f040004;
-        public static final int row_amount_text=0x7f040001;
-        public static final int row_off_background=0x7f040002;
         /**  supItem Row 
          */
-        public static final int row_reason_text=0x7f040000;
+        public static final int row_label_text=0x7f040000;
+        public static final int row_off_background=0x7f040002;
+        public static final int row_value_text=0x7f040001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -35,21 +35,28 @@ public final class R {
         public static final int ic_action_new=0x7f020000;
         public static final int ic_launcher=0x7f020001;
         public static final int ic_list_remove=0x7f020002;
+        public static final int ic_minus=0x7f020003;
+        public static final int ic_minus2=0x7f020004;
+        public static final int ic_plus=0x7f020005;
+        public static final int ic_plus2=0x7f020006;
     }
     public static final class id {
-        public static final int action_add_item=0x7f09000c;
+        public static final int action_add_item=0x7f09000f;
+        public static final int cancel_button=0x7f09000e;
         public static final int container=0x7f090000;
         public static final int delete_button=0x7f090006;
-        public static final int dialog_amount_title=0x7f090008;
-        public static final int dialog_amount_value=0x7f090009;
-        public static final int dialog_label_title=0x7f09000a;
-        public static final int dialog_label_value=0x7f09000b;
+        public static final int delimiter=0x7f09000c;
+        public static final int dialog_amount_title=0x7f09000a;
+        public static final int dialog_amount_value=0x7f09000b;
+        public static final int dialog_label_title=0x7f090008;
+        public static final int dialog_label_value=0x7f090009;
         public static final int dialog_title=0x7f090007;
-        public static final int editText1=0x7f090004;
+        public static final int editText1=0x7f090003;
         public static final int label=0x7f090001;
-        public static final int minus_button=0x7f090003;
-        public static final int plus_button=0x7f090005;
-        public static final int value=0x7f090002;
+        public static final int minus_button=0x7f090002;
+        public static final int ok_button=0x7f09000d;
+        public static final int plus_button=0x7f090004;
+        public static final int value=0x7f090005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

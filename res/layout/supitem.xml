@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true" >
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,32 +12,19 @@
         android:layout_marginRight="50dp"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/default_label"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/label"
-                android:text="@string/default_value"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/default_label"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/row_label_text" />
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center_horizontal"
             android:orientation="horizontal" >
 
             <ImageButton
@@ -47,7 +34,7 @@
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/minus_button_description"
                 android:gravity="center"
-                android:src="@drawable/ic_list_remove" />
+                android:src="@drawable/ic_minus" />
 
             <EditText
                 android:id="@+id/editText1"
@@ -67,15 +54,30 @@
                 android:background="?android:selectableItemBackground"
                 android:contentDescription="@string/plus_button_description"
                 android:gravity="center"
-                android:src="@drawable/ic_list_remove" />
+                android:src="@drawable/ic_plus" />
         </RelativeLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/delete_button"
+        android:ellipsize="end"
+        android:text="@string/default_value"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/row_value_text"
+        android:textScaleX="0.4"
+        android:textSize="65sp" />
 
     <ImageButton
         android:id="@+id/delete_button"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.2"
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/delete_button_description"
         android:gravity="center_vertical"
